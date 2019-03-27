@@ -20,10 +20,11 @@ p = zeros(Nf);
 %p(1:(Nf/2),(Nf/2):Nf) = pout;
 %p((Nf/2):Nf,1:(Nf/2)) = pout;
 
-p(1:(Nf/2),(Nf/2+1):Nf) = (rand(Nf/2,Nf/2) < pout);
+p(1:(Nf/2),(Nf/2+1):Nf) = pout * (rand(Nf/2,Nf/2) < .3);
 %p((Nf/2):Nf,1:(Nf/2)) = (rand(Nf/2,Nf/2) < pout);
 p = max(p,p');
 p = p - diag(diag(p));
+p = p + pin*eye(Nf);
 
 %%%%%%%%%%%%%%%% end define p
 
